@@ -1,0 +1,25 @@
+body{
+    background-image: url(media/unicen.jfif);
+    background-repeat: no-repeat;
+    background-position: 400px 350px;
+    color:#000000;
+    font-family: Helvetic, Arial, sans-serif;
+    font-size:18px;
+    margin:0;
+    padding:0;
+}
+th{
+    border-bottom:3px solid #dd05229a;
+}
+table{
+    background:#e9bf98
+}
+#encabezado{
+    background: #cccccc;
+    margin: 0;
+    padding: 20px;
+}
+
+#contenido_principal{
+    margin-top: 20px;
+}
