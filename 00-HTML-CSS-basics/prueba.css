@@ -23,3 +23,18 @@ table{
 #contenido_principal{
     margin-top: 20px;
 }
+
+#SMB-principal{
+    background-color:#aa1e1e;
+    color:#000000;
+    width:45%;
+    float:left;
+    margin-left:1.5%;
+}
+
+#SMB-secundario{
+    width:30%;
+    background-color:#eb5a5ab9;
+    float:right;
+    margin-right:8%;
+}

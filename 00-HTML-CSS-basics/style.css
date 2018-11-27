@@ -1,0 +1,36 @@
+body *{
+    text-align: center;
+    color:white;
+    background-color:#4b4949;
+}/*centro todo que este en body, le dejo
+    letra blanca y fondo gris oscuro*/
+
+body>header, body>footer{
+    padding-top:1%;
+    padding-bottom:1%;
+    height:20%;
+    clear:both;
+/*espacios solo al header y footer principal*/
+}
+
+article{
+    padding-top:3%;
+    padding-bottom:3%;
+}
+
+section{
+    height:70%;
+    width:50%;
+}
+
+nav{
+    height:70%;
+    width:25%;
+    float:left;
+}
+
+aside{
+    height:70%;
+    width:25%;
+    float:right;
+}
