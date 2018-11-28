@@ -7,31 +7,56 @@ ii) Create an empty style.css file and link it to the index.html using the link
 iii) Learn why is a best-practice to use a reset stylesheet here. Then include
     normalize.css before linking your style.css. DONE?
 iv) Add a basic page structure using HTML as depicted by the following picture:-->
-<html>
+
+<!--Exercises: 1. Add background to the header, footer,
+aside and nav. 2. Add a global font definition (at html element)
+with a value of 14px, using a font-family you like. 3.
+Center the header and footer text.-->
+
+<!--To <header> add class .header
+To <footer> add class .footer
+To <section> add class .content
+To <nav> add class .navigation
+To <aside> add class .sidebar-->
+
+<!--Using the new added classes figure out how to override:
+.header must have a font size of 46px
+.footer must have a font size of 10px
+.content must have a font size of 14px
+.navigation must have a font size of 12px
+.sidebar must have a font size of 10px-->
+
+<!--If the class attribute finishes with r (example header, footer), the background must be magenta.
+If the class attribute contains an a (example nav) but do NOT finish with r, the background must be blue.
+How could you add weight to the global font definition to win over the classes added by point 3?
+Imagine there is a declaration like class=”oh-no-inline-styles” style=”background:red” and you need to change the background to green without changing the inline style. How could you accomplish this?-->
+
+<html lang="es">
 
 <head>
-    <title>Pagina HTML con CSS v1.5</title>
+    <title>Pagina HTML con CSS v2.0</title>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="reset.css">
+    <link rel="stylesheet" type="text/css" href="normalize.css">
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 
 <body>
-    <header>< header ></header>
-    <nav>< nav ></nav>
+    <div class="tirro"> <!--tirro: nombre usado para que no se pinte todo de magenta ni azul-->
+        <header class="header">header</header>
+    
+        <nav class="navigation">nav</nav>
+        <aside class="sidebar">aside</aside>
 
-    <section> < seccion >
-        <header>< header ></header>
-        <article>< articulo ></article>
-        <footer>< footer ></footer>
-    </section>
-
-    <aside>< aside ></aside>
-    <footer>< footer ></footer>
-
-
-
-
+        <section class="content"> seccion
+            <header class="header">header</header>
+            <article>articulo</article>
+            <footer class="footer">footer</footer>
+        </section>
+        
+        <footer class="footer">footer</footer>
+    </div>
 </body>
 
 

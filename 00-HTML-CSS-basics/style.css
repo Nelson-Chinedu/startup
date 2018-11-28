@@ -1,36 +1,106 @@
-body *{
-    text-align: center;
-    color:white;
-    background-color:#4b4949;
-}/*centro todo que este en body, le dejo
-    letra blanca y fondo gris oscuro*/
 
-body>header, body>footer{
-    padding-top:1%;
-    padding-bottom:1%;
-    height:20%;
-    clear:both;
-/*espacios solo al header y footer principal*/
+/*How could you add weight to the global
+font definition to win over the classes added
+by point 3?: utlizando "!important" */
+body{
+    font-family: Helvetica, sans-serif;
+    font-weight: bolder;
 }
 
-article{
-    padding-top:3%;
-    padding-bottom:3%;
+html{
+    font-size:14px;
 }
 
-section{
-    height:70%;
+.tirro{
+    background:#444242ef;
     width:50%;
+    height:100%;
+    margin-left:auto;
+    margin-right:auto;
+    border-radius:10px;
+    padding:0.004% 0.5% 0.5% 0.5%;
+    box-sizing: border-box;
 }
 
-nav{
-    height:70%;
-    width:25%;
+
+.tirro *{
+    background-color:#74777396;
+    color:white;
+
+    margin-left:auto;/*usar clase contenedora*/
+    margin-right:auto; /*usar clase contenedora*/
+
+    padding-top:10px;
+    padding-bottom:10px;
+    text-align:center;
+    box-sizing: content-box;
+    border-radius: 10px;
+}
+
+.tirro>.footer{
+    clear:both;
+}
+
+.header{
+    font-size:46px;
+    margin-top:5%;
+    margin-bottom:2%;
+    height:20%;
+    width:100%;
+    clear:both;
+}
+
+.footer{
+    font-size:10px;
+    height:10%;
+    width:100%;
+}
+
+
+.navigation{
+    font-size:12px;
+    height:17.5em;
+    width:21%;
     float:left;
+    margin-bottom:2%;
 }
 
-aside{
-    height:70%;
-    width:25%;
+.sidebar{
+    font-size:10px;
+    height:21.1em;
+    width:21%;
     float:right;
 }
+
+.content{
+    font-size:14px;
+    margin-left:4%; /*el -auto- no lo acomoda, tuve que forzarlo*/
+    margin-right:auto;
+    float:left;
+    width:50%;
+    height:100%;
+}
+
+.content article{
+    margin-bottom:2%;
+    margin-top:2%;
+    padding:8% 0% 8% 0%;
+}
+
+.content>*{
+    background:#c5c2c2dc;
+}
+
+*[class$="r"]{
+    background-color:magenta;
+}
+
+*[class*="a"]:not([class$="r"]){
+    background: blue;
+}
+
+/*Imagine there is a declaration like
+class=”oh-no-inline-styles” style=”background:red”
+and you need to change the background to green
+without changing the inline style. How could
+you accomplish this? nuevamente con "!important"*/
