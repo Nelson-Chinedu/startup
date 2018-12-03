@@ -1,0 +1,56 @@
+/* Small screens (default) */
+html { 
+    font-size: 100%; 
+    }
+
+/* Medium screens (640px) */
+@media (min-width: 40rem) { 
+  html { font-size: 112%; }
+}
+
+/* Large screens (1024px) */
+@media (min-width: 64rem) { 
+  html { font-size: 120%; }
+}
+
+img{width:100%;height:100%;}
+
+body *{
+    position: relative;
+}
+
+body > *{
+    float:left;
+    border:solid;
+    display: -ms-inline-grid;
+    margin:3px;
+    box-sizing: border-box;
+}
+
+#titulo{
+    background:yellowgreen;
+    width:35%;
+    order:1;
+    height:140px;
+    margin-bottom:5%;
+}
+
+#intro{
+    background: lightblue;
+    width:60%;
+    order:2;
+    padding:2px;
+    height:140px;
+    margin-bottom:5%;
+}
+
+.contenedor{
+    background-color: grey;
+    order:3;
+    width:32%;
+    height:140px;
+}
+
+.contenedor:hover{
+    background:blue;
+}
