@@ -99,7 +99,7 @@ class Movie extends EventEmitter {
   }
 
   play() {
-  		this.emit('play','play');
+  		this.emit('play','play'); 
   }
 
   pause() {
@@ -109,7 +109,7 @@ class Movie extends EventEmitter {
   resume() {
   		this.emit('resume','resume');
   }
-
+// podria dejar el segundo parametro con "this" y usaria en el log los atributos de la pelicula
 }
 
 // Instantiate some of your favorite movies and play with them in the console.*/
@@ -182,3 +182,39 @@ peli.play();
 peli.pause();
 peli.resume();
 peli.pause();
+
+/*Create an object called social, defining the methods share(friendName)
+and like(friendName) that generates the following output {friendName} likes/share {movieName}.
+
+Then extend a movie with it to have access to this methods.
+
+You should end with something like
+
+const ironman = new Movie(...);
+
+...
+
+ironman.share('Mike Blossom');
+
+Hint: A mixin is not a class which will be instantiated later on. Use a way
+to extend some object methods into another object. Template literals might
+be useful to generate the required output.*/
+
+// mixin
+
+let social = {
+  like(friendName) {
+ 	console.log(friendName + " likes.");
+    
+  },
+  share(friendName) {
+    console.log("Share " + friendName + ".");
+  }
+}
+
+Object.assign(Movie.prototype, social);
+
+peli.share("Nuria Suarez coach");
+peli.like("Fernando Ochoteco");
+peli.like("Luciano Elissondo");
+peli.like("Roberto Marcos");
