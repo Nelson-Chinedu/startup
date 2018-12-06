@@ -1,69 +1,5 @@
 /*Creating classes
 
-Create a Movie Class with the following structure
-
-Movie
-- title 
-- year 
-- duration
-+ constructor(name, year, duration) 
-+ play() 
-+ pause()
-+ resume()
-
-Instantiate some of your favorite movies and play with them in the console.*/
-
-class Movie extends EventEmitter {
-  constructor(name, year, duration) {
-    this.title = name;
-    this.year = year;
-    this.duration = duration; // en minutos
-  }
-
-  toString(){
-  	return "Title: " + this.title + ", year: " + this.year + ", duration: " + this.duration + " minutes.";
-  }
-
-  play() {
-
-  }
-
-  pause() {
-
-  }
-
-  resume() {
-
-  }
-
-}
-
-const pelicula1 = new Movie("The Terminator",1984,107);
-const pelicula2 = new Movie("Back to the Future",1985,116);
-const pelicula3 = new Movie("The Hateful Eight",2015,168);
-
-function mostrarPeliculas(){
-	console.log(pelicula1.toString());
-	console.log(pelicula2.toString());
-	console.log(pelicula3.toString());
-}
-
-/*
-Create an Actor class with the following structure
-
-Actor
-- name 
-- age
-+ constructor(name, age)*/
-
-
-class Actor {
-	constructor(name,age){
-		this.name=name;
-		this.age=age;
-	}
-}
-
 /*Create a class called EventEmitter with the following structure
 
 EventEmitter
@@ -112,5 +48,137 @@ class EventEmitter {
 
 }
 
+/*
+Create an Actor class with the following structure
+
+Actor
+- name 
+- age
++ constructor(name, age)*/
+
+
+class Actor {
+	constructor(name,age){
+		this.name=name;
+		this.age=age;
+	}
+}
+
 /*Make the Movie class a subclass of EventEmitter and use the inherited
 methods to publish play, pause and resume events when the related method is called.*/
+
+
+/*Create a Movie Class with the following structure
+
+Movie
+- title 
+- year 
+- duration
++ constructor(name, year, duration) 
++ play() 
++ pause()
++ resume()*/ 
+
+class Movie extends EventEmitter {
+  constructor(name, year, duration) {
+  	super();
+    this.title = name;
+    this.year = year;
+    this.duration = duration; // en minutos
+    this.actualCast = [];
+  }
+
+  addCast(actores){
+  	this.actualCast = this.actualCast.concat(actores); // "concat" funciona con string individual y/o array, indistintamente
+  	for(var i=0;i<this.actualCast.length;i++)
+  		alert(this.actualCast[i].name);
+  }
+
+  toString(){
+  	return "Title: " + this.title + ", year: " + this.year + ", duration: " + this.duration + " minutes.";
+  }
+
+  play() {
+  		this.emit('play','play');
+  }
+
+  pause() {
+  		this.emit('pause','pause');
+  }
+
+  resume() {
+  		this.emit('resume','resume');
+  }
+
+}
+
+// Instantiate some of your favorite movies and play with them in the console.*/
+
+const terminator = new Movie("The Terminator",1984,107);
+const future = new Movie("Back to the Future",1985,116);
+const hateful = new Movie("The Hateful Eight",2015,168);
+
+function mostrarPeliculas(){
+	console.log(terminator.toString());
+	console.log(future.toString());
+	console.log(hateful.toString());
+}
+
+
+/*Add a method to Movie as addCast(cast) that allows the addition
+of one or more Actors to a movie. It must work if provided with
+more than one Actor at the same time.
+
+You should be able to do something like:...*/
+
+const arnold = new Actor('Arnold Schwarzenegger', 50);
+const actors = [
+    new Actor('Paul Winfield', 50),
+    new Actor('Michael Biehn', 50),
+    new Actor('Linda Hamilton', 50)
+];
+
+const michael = new Actor ('Michael J. Fox', 57);
+
+const castHateful= [
+	new Actor ('Samuel L. Jackson', 69),
+	new Actor ('Kurt Russell', 67),
+];
+
+
+const peli = new Movie('La vida de un estudiante',2018,240);
+
+/*Create a Logger class with the following structure
+
+Logger
++ constructor()
++ log(info)
+After creating this class make an instance of Logger and make it listen to Movie's play event.
+
+As example you must end with something like
+
+const terminator = new Movie('Terminator I', 1985, 60);
+
+...
+
+terminator.play(); // output: The 'play' event has been emitted*/
+
+class Logger {
+	constructor(){
+
+	}
+
+	log(info){
+		console.log('The ' + info + ' event has been emitted');
+	}
+}
+
+const log1 = new Logger();
+peli.on('play',log1.log);
+peli.on('pause',log1.log);
+peli.on('resume',log1.log);
+
+peli.play();
+peli.pause();
+peli.resume();
+peli.pause();
