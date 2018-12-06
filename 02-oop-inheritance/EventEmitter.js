@@ -1,5 +1,5 @@
 class EventEmitter {
-	constructor(){
+	constructor() {
     	this.events = {}; 
 	}
 
@@ -16,7 +16,7 @@ class EventEmitter {
   }
 	}
 
-	emit(eventName, data){
+	emit(eventName, data) {
 		const event = this.events[eventName];
  		if (event) { 
     		event.forEach(fn => {
@@ -25,7 +25,7 @@ class EventEmitter {
    		}
 	}
 
-	off(eventName, callback){
+	off(eventName, callback) {
 		let unsubscribe = emitter.on(eventName, callback => console.log(callback)); // capturo el closure
 
 		unsubscribe(); // ejecuto el closure

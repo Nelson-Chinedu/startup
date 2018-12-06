@@ -1,9 +1,9 @@
 class Logger {
-	constructor(){
+	constructor() {
 
 	}
 
-	log(info){
+	log(info) {
 		console.log('The ' + info + ' event has been emitted');
 	}
 }

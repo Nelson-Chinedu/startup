@@ -7,26 +7,26 @@ class Movie extends EventEmitter {
     this.actualCast = [];
   }
 
-  addCast(actores){
+  addCast(actores) {
   	this.actualCast = this.actualCast.concat(actores); // "concat" funciona con string individual y/o array, indistintamente
-  	for(var i=0;i<this.actualCast.length;i++)
+  	for(var i = 0; i < this.actualCast.length ; i++)
   		alert(this.actualCast[i].name);
   }
 
-  toString(){
+  toString() {
   	return "Title: " + this.title + ", year: " + this.year + ", duration: " + this.duration + " minutes.";
   }
 
   play() {
-  		this.emit('play','play'); 
+  		this.emit('play', 'play'); 
   }
 
   pause() {
-  		this.emit('pause','pause');
+  		this.emit('pause', 'pause');
   }
 
   resume() {
-  		this.emit('resume','resume');
+  		this.emit('resume', 'resume');
   }
 // podria dejar el segundo parametro con "this" y usaria en el log los atributos de la pelicula
 }
