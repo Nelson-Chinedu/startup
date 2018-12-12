@@ -8,12 +8,12 @@ const Movie = (props) => { // Componente stateless
         return(
             <div>
                 <ul>
-                    {items.map(item => <Elemento  key={item.name} items={item} />)}
+                    { items.map(item => <Elemento  key={item.name} items={item} />) }
                 </ul>
             </div>
         )
 }
 
-const Elemento = (props) => <li>{props.items.name}</li>
+const Elemento = (props) => <li> { props.items.name } </li>
 
 export default Movie;

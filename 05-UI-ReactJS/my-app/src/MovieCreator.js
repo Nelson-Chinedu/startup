@@ -25,10 +25,6 @@ onSubmit(event) {
     this.props.onAddMovie(movie);
 }
 
-
-
-
-
     render() {
         return(
             <div>
