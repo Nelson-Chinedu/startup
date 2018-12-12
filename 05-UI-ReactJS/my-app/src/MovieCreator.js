@@ -2,47 +2,46 @@ import React from 'react';
 
 
 
-class MovieCreator extends React.Component{
-constructor(){
+class MovieCreator extends React.Component {
+constructor() {
     super();
     this.state = {
         name:'',
         author:''
     }
-    this.refName=React.createRef();// mejor aca que en las etiquetas
-    this.refAuthor=React.createRef();
-    this.onSubmit=this.onSubmit.bind(this);
-    this.mostrar=this.mostrar.bind(this);
+    this.refName = React.createRef();
+    this.refAuthor = React.createRef();
+    this.onSubmit = this.onSubmit.bind(this);
 }
 
-onSubmit(event){
-event.preventDefault();
+onSubmit(event) {
+    event.preventDefault();
 
-    const movie = {name:this.refName.current.value, author:this.refAuthor.current.value}
+    const movie = {
+        name:this.refName.current.value,
+        author:this.refAuthor.current.value
+        }
     
     this.props.onAddMovie(movie);
 }
 
-mostrar(event){
-    event.preventDefault();
-    this.props.onShow();
-}
 
 
 
-    render(){
+
+    render() {
         return(
             <div>
-                <input placeholder="Ingresa nombre de peli"  ref={this.refName} /> 
+                <input placeholder = "Ingresa nombre de peli"  ref = {this.refName} /> 
 
                 <hr />
 
-                <input placeholder="Ingresa el autor" ref={this.refAuthor}/>
+                <input placeholder = "Ingresa el autor" ref = {this.refAuthor} />
 
                 <hr />
 
-                <button type="submit" onClick={this.onSubmit}> Submit! </button>
-                <button type="submit" onClick={this.mostrar}> Mostrar! </button>
+                <button type = "submit" onClick = {this.onSubmit} > Submit! </button>
+
             </div>
             
         )
