@@ -51,36 +51,4 @@ onSubmit(event) {
 
 
 
-export default MovieCreator
-
- /* render(){
-    return(
-      <div id="container">
-          <Input ref={component => this.a = component} update={this.update.bind(this)} />
-          {this.state.a}
-          <hr />
-          <Input ref={component => this.b = component} update={this.update.bind(this)} />
-          {this.state.b}
-          <Button ref={component => this.input = component} setear={this.setear.bind(this)} />
-          
-      </div>
-    )
-  }
-}
-
-class Input extends React.Component{
-  render(){
-    return(
-      <div><input type="text" ref="input" onChange={this.props.setear}/></div>
-    )
-  }
-}
-
-class Button extends React.Component{
-  render(){
-    return(
-      <button ref="submit" type="submit" onClick={this.props.setear}>Submit!</button>
-    )
-  }
-}*/
-
+export default MovieCreator;

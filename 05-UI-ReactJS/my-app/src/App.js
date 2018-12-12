@@ -15,6 +15,8 @@ class App extends React.Component {
 
  
   addMovie (movie) {
+    if ((movie.name==='') || (movie.author==='')) // evito poner contenido incompleto
+      return;
     this.setState({
         movies: [...this.state.movies, movie]
       })
@@ -33,6 +35,8 @@ class App extends React.Component {
       <div id="container">
           <MovieCreator onAddMovie = {this.addMovie} />
           <Movie movies = {this.state.movies} />
+          <hr />
+          
       </div>
     )
   }
@@ -40,4 +44,4 @@ class App extends React.Component {
 
 
 
-export default App
+export default App;

@@ -1,10 +1,9 @@
 import React from 'react';
 
-class Movie extends React.Component {
 
-    render() {
+const Movie = (props) => { // Componente stateless
 
-        let items = this.props.movies;
+        let items = props.movies;
 
         return(
             <div>
@@ -13,12 +12,8 @@ class Movie extends React.Component {
                 </ul>
             </div>
         )
-    }
 }
 
-export default Movie
-
- 
-
-
 const Elemento = (props) => <li>{props.items.name}</li>
+
+export default Movie;
