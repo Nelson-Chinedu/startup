@@ -15,13 +15,16 @@ constructor(){
     this.mostrar=this.mostrar.bind(this);
 }
 
-onSubmit(){
+onSubmit(event){
+event.preventDefault();
+
     const movie = {name:this.refName.current.value, author:this.refAuthor.current.value}
     
     this.props.onAddMovie(movie);
 }
 
-mostrar(){
+mostrar(event){
+    event.preventDefault();
     this.props.onShow();
 }
 
