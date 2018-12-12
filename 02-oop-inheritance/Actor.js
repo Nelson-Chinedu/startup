@@ -4,3 +4,5 @@ class Actor {
 		this.age = age;
 	}
 }
+
+export default Actor;

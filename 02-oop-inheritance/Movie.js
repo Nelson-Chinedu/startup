@@ -30,3 +30,5 @@ class Movie extends EventEmitter {
   }
 // podria dejar el segundo parametro con "this" y usaria en el log los atributos de la pelicula
 }
+
+export default Movie;
