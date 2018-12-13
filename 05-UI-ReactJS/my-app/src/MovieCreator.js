@@ -28,15 +28,15 @@ onSubmit(event) {
     render() {
         return(
             <div>
-                <input placeholder = "Ingresa nombre de peli"  ref = {this.refName} /> 
+                <input placeholder="Ingresa nombre de peli"  ref={ this.refName } /> 
 
                 <hr />
 
-                <input placeholder = "Ingresa el autor" ref = {this.refAuthor} />
+                <input placeholder="Ingresa el autor" ref={ this.refAuthor } />
 
                 <hr />
 
-                <button type = "submit" onClick = {this.onSubmit} > Submit! </button>
+                <button type="submit" onClick={ this.onSubmit } > Agregar! </button>
 
             </div>
             
