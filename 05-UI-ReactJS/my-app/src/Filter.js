@@ -15,9 +15,7 @@ class Filter extends React.Component{
 
         return(
             <div>
-                <input placeholder = "Ingresa el filtro aqui!" ref = {this.refInput} />
-                <hr />
-                <button type = "submit" onClick = {this.filtrar} > Filtrar! </button>
+                <input onChange={ this.filtrar } placeholder = "Ingresa el filtro aqui!" ref = {this.refInput} />
             </div>
         )
     }

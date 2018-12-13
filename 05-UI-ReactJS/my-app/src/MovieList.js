@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const Movie = (props) => { // Componente stateless
+const MovieList = (props) => { // Componente stateless
 
         let items = props.movies;
 
@@ -16,4 +16,4 @@ const Movie = (props) => { // Componente stateless
 
 const Elemento = (props) => <li> { props.items.name } </li>
 
-export default Movie;
+export default MovieList;
