@@ -6,6 +6,7 @@ class MovieEditer extends React.Component{
         super();
 
         this.enviar=this.enviar.bind( this );
+        this.cancelar=this.cancelar.bind( this );
         
         this.refName = React.createRef();
         this.refAuthor = React.createRef();
@@ -24,6 +25,13 @@ class MovieEditer extends React.Component{
         
     }
 
+    cancelar(e){
+
+        e.preventDefault();
+
+        this.props.cancelar();
+    }
+
     render(){
         return(
             <form>
@@ -36,6 +44,7 @@ class MovieEditer extends React.Component{
                          <input type="text" defaultValue={ this.props.author } ref={ this.refAuthor } />
                  </label>
               <button type="submit" value="Submit" onClick={ this.enviar } > atr submit </button>
+              <button type="submit" value="Submit" onClick={ this.cancelar } > cancelar </button>
             </form>
         )}
 }

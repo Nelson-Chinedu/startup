@@ -93,10 +93,8 @@ class App extends React.Component {
     return (
       <div id="container">
           <MovieCreator onAddMovie={ this.addMovie } />
-          <MovieList movies={ this.state.filteredMovies } edit={ this.edit } />
           <hr />
-          <Filter onFiltered={ this.efectuarFiltro } />
-          <hr />
+          <MovieList movies={ this.state.filteredMovies } edit={ this.edit } onFiltered={ this.efectuarFiltro }/>
           <hr />
           
       </div>

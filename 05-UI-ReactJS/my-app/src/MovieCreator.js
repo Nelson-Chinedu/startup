@@ -34,7 +34,8 @@ onSubmit(event) {
 
                 <input placeholder="Ingresa el autor" ref={ this.refAuthor } />
 
-                <hr />
+                <br />
+                <br />
 
                 <button type="submit" onClick={ this.onSubmit } > Agregar! </button>
 

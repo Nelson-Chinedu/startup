@@ -1,5 +1,6 @@
 import React from 'react';
 import MovieEditer from './MovieEditer.js';
+import Filter from './Filter.js';
 
 class MovieList extends React.Component { // Componente stateless
     constructor(){
@@ -13,10 +14,13 @@ class MovieList extends React.Component { // Componente stateless
         this.switchEdit=this.switchEdit.bind(this);
         this.switchWatch=this.switchWatch.bind(this);
         this.ejecutarEdicion=this.ejecutarEdicion.bind(this);
+        this.efectuarFiltro=this.efectuarFiltro.bind(this);
         
     }
 
-    
+    efectuarFiltro(keyWord){
+        this.props.onFiltered(keyWord);
+    }
 
     mostrar(){
             if (this.state.editar===false){
@@ -26,6 +30,7 @@ class MovieList extends React.Component { // Componente stateless
                     <ul>
                             { items.map(item => <Elemento switchEdit={ this.switchEdit } key={ item.name } items={ item } />) } 
                     </ul>
+                    <Filter onFiltered={ this.efectuarFiltro } />
                 </div>
             )
         }
@@ -34,11 +39,12 @@ class MovieList extends React.Component { // Componente stateless
                 
                 return(
                     <div>
-                        <p>zona de edicion</p>
+                        <p>Zona de edicion</p>
                         <MovieEditer
                                     name={ this.state.name }
                                     author={ this.state.author }
-                                    onSubmit={ this.ejecutarEdicion } /> 
+                                    onSubmit={ this.ejecutarEdicion }
+                                    cancelar={ this.switchWatch } /> 
                         
                     </div>
 
