@@ -1,7 +1,6 @@
 import React from 'react';
 import MovieEditer from './MovieEditer.js';
 import Filter from './Filter.js';
-import DeletedElement from './DeletedElement.js';
 
 class MovieList extends React.Component { // Componente stateless
     constructor(){
@@ -91,11 +90,13 @@ class MovieList extends React.Component { // Componente stateless
 const Elemento = (props) => <li>
                                 { props.items.name + " " }
                                 { "- " + props.items.author + " "}
-                                { <button 
+
+                                { <button // boton de editar
                                         onClick={props.switchEdit}
                                         name={props.items.name}
                                         author={props.items.author} > Editar </button> }
-                                { <button 
+
+                                { <button // boton de eliminar
                                         onClick={props.deleteMovie}
                                         name={props.items.name}
                                         author={props.items.author} > Eliminar </button> }

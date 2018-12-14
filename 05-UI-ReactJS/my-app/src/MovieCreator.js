@@ -4,13 +4,17 @@ import React from 'react';
 
 class MovieCreator extends React.Component {
 constructor() {
+
     super();
+
     this.state = {
         name:'',
         author:''
     }
+
     this.refName = React.createRef();
     this.refAuthor = React.createRef();
+    
     this.onSubmit = this.onSubmit.bind(this);
 }
 

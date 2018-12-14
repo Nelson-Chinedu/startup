@@ -3,6 +3,7 @@ import React from 'react';
 class MovieEditer extends React.Component{
 
     constructor(){
+        
         super();
 
         this.enviar=this.enviar.bind( this );
