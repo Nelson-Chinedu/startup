@@ -22,6 +22,7 @@ class App extends React.Component {
     this.addMovie=this.addMovie.bind(this);
     this.efectuarFiltro=this.efectuarFiltro.bind(this);
     this.deleteMovie=this.deleteMovie.bind(this);
+    this.edit=this.edit.bind(this);
   }
 
  
@@ -50,7 +51,7 @@ class App extends React.Component {
 
   deleteMovie(nombre) {
 
-    var array = [];
+    let array = []; // antes era var
     for (var i=0;i<this.state.movies.length;i++){
       if (this.state.movies[i].name!==nombre)
         array.push(this.state.movies[i]);
@@ -62,12 +63,37 @@ class App extends React.Component {
     })  
   }
 
+  edit(nombreInicial,authorInicial,nombreFinal,authorFinal){
+    
+    let array = this.state.movies
+    /////////////debugger
+  if (nombreFinal===''){
+    nombreFinal=nombreInicial;
+  }
+
+  if (authorFinal===''){
+    authorFinal=authorInicial;
+  }
+
+    for(var i=0;i<array.length;i++){
+      if (array[i].name===nombreInicial){
+        array[i].name=nombreFinal;
+        array[i].author=authorFinal;
+        break;
+      }
+    }
+    this.setState({
+      movies:array,
+      filteredMovies:array
+    })
+
+  }
  
   render() {
     return (
       <div id="container">
           <MovieCreator onAddMovie={ this.addMovie } />
-          <MovieList movies={ this.state.filteredMovies } />
+          <MovieList movies={ this.state.filteredMovies } edit={ this.edit } />
           <hr />
           <Filter onFiltered={ this.efectuarFiltro } />
           <hr />
