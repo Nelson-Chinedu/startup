@@ -38,10 +38,10 @@ class App extends React.Component {
   }
 
   efectuarFiltro(keyWord){
-
     let myItems = this.state.movies
-
-    let newArray = myItems.filter(item => item.name.includes(keyWord) || item.author.includes(keyWord))
+    let newArray = myItems.filter(
+      item => item.name.toLowerCase().includes(keyWord.toLowerCase()) || item.author.toLowerCase().includes(keyWord.toLowerCase())
+      )
 
     this.setState({
         filteredMovies: newArray
@@ -72,13 +72,13 @@ class App extends React.Component {
           <Filter onFiltered={ this.efectuarFiltro } />
           <hr />
           <hr />
-          <DeletedElement onDeleteMovie={ this.deleteMovie } />
+          
       </div>
     )
   }
 }
 
-
+// <DeletedElement onDeleteMovie={ this.deleteMovie } />
 
 export default App;
 

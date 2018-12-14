@@ -4,29 +4,65 @@ import React from 'react';
 class MovieList extends React.Component { // Componente stateless
     constructor(){
         super();
-
+        this.state = {
+            editar:false
+        }
+        this.listarPeli=this.listarPeli.bind( this );
+        this.update=this.update.bind(this);
     }
 
-    
-    render(){
+    listarPeli(){
+            if (!(this.state.editar)){
+            let items = this.props.movies;
+            return( 
+                <div> Peliculas disponibles:
+                    <ul> 
+                            { items.map(item => <Elemento update={ this.update } key={ item.name } items={ item } />) } 
+                    </ul>
+                </div>
+            )
+        }
+        else
+            {
+                return(
+                <p>HOLA LUCHO ESTO ES PARA EDITAR</p>)
 
-        let items = this.props.movies;
+
+            }
+    }
+
+    update(){
+        let a=!(this.state.editar)
+        this.setState({
+            editar:a
+        })
+    }
+
+    render(){
         
         return(
-            <div> Peliculas disponibles:
-                <ul>
-                    { items.map(item => <Elemento  key={ item.name } items={ item } />) }
-                </ul>
-            </div>
+            this.listarPeli()
         )
 }
 }
 
 const Elemento = (props) => <li>
                                 { props.items.name + " " }
-                                { <button onClick={this} > Editar </button> }
-                                { " " + props.items.author + " "}
-                                { <button onClick={this} > Editar </button> }
+                                { "- " + props.items.author + " "}
+                                { <button onClick={props.update} > Editar </button> }
+                               
                              </li>
 
+const MovieEditer = (props) => <form>
+                                    <label>
+                                        Name:
+                                        <input type="text" name="name" />
+                                    </label>
+
+                                    <label>
+                                        Author:
+                                        <input type="text" name="author" />
+                                    </label>
+                                    <input type="submit" value="Submit" />
+                                </form>
 export default MovieList;
