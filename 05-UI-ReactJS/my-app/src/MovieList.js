@@ -1,6 +1,7 @@
 import React from 'react';
 import MovieEditer from './MovieEditer.js';
 import Filter from './Filter.js';
+import DeletedElement from './DeletedElement.js';
 
 class MovieList extends React.Component { // Componente stateless
     constructor(){
@@ -15,7 +16,12 @@ class MovieList extends React.Component { // Componente stateless
         this.switchWatch=this.switchWatch.bind(this);
         this.ejecutarEdicion=this.ejecutarEdicion.bind(this);
         this.efectuarFiltro=this.efectuarFiltro.bind(this);
+        this.deleteMovie=this.deleteMovie.bind(this);
         
+    }
+
+    deleteMovie(e){
+        this.props.onDeleteMovie(e.target.attributes.name.value)
     }
 
     efectuarFiltro(keyWord){
@@ -28,7 +34,7 @@ class MovieList extends React.Component { // Componente stateless
             return( 
                 <div> Peliculas disponibles:
                     <ul>
-                            { items.map(item => <Elemento switchEdit={ this.switchEdit } key={ item.name } items={ item } />) } 
+                            { items.map(item => <Elemento deleteMovie={this.deleteMovie} switchEdit={ this.switchEdit } key={ item.name } items={ item } />) } 
                     </ul>
                     <Filter onFiltered={ this.efectuarFiltro } />
                 </div>
@@ -89,7 +95,11 @@ const Elemento = (props) => <li>
                                         onClick={props.switchEdit}
                                         name={props.items.name}
                                         author={props.items.author} > Editar </button> }
-                                        {console.log(props.items.author)}
+                                { <button 
+                                        onClick={props.deleteMovie}
+                                        name={props.items.name}
+                                        author={props.items.author} > Eliminar </button> }
+                                
                              </li>
 
 

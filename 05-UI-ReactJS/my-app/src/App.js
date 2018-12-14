@@ -23,6 +23,7 @@ class App extends React.Component {
     this.efectuarFiltro=this.efectuarFiltro.bind(this);
     this.deleteMovie=this.deleteMovie.bind(this);
     this.edit=this.edit.bind(this);
+  
   }
 
  
@@ -94,7 +95,7 @@ class App extends React.Component {
       <div id="container">
           <MovieCreator onAddMovie={ this.addMovie } />
           <hr />
-          <MovieList movies={ this.state.filteredMovies } edit={ this.edit } onFiltered={ this.efectuarFiltro }/>
+          <MovieList onDeleteMovie={ this.deleteMovie} movies={ this.state.filteredMovies } edit={ this.edit } onFiltered={ this.efectuarFiltro }/>
           <hr />
           
       </div>
