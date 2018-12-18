@@ -9,13 +9,14 @@ class MovieList extends React.Component { // Componente stateless
     constructor(){
         super();
         this.state = {
-            editar: false,
-            name: '',
-            author: ''
+            name:'',
+            author:'',
+            editar: false
         }
       
         this.onClickDelete=this.onClickDelete.bind(this);
-        
+        this.switchWatch=this.switchWatch.bind(this);
+        this.switchEdit=this.switchEdit.bind(this);
     }
 
     onClickDelete(event){
@@ -23,21 +24,15 @@ class MovieList extends React.Component { // Componente stateless
 
         let movie = {
             name: event.target.attributes.name.value,
-            movie: event.target.attributes.author.value
+            author: event.target.attributes.author.value
         }
+        
         this.props.onDeleteMovie(movie);
-        debugger
 
     }
 
     efectuarFiltro(keyWord){
         this.props.onFiltered(keyWord);
-    }
-
-    
-    ejecutarEdicion(nInicial,aInicial,nFinal,aFinal){
-        this.props.edit(nInicial,aInicial,nFinal,aFinal)
-        this.switchWatch();
     }
 
     switchWatch(){
@@ -47,11 +42,12 @@ class MovieList extends React.Component { // Componente stateless
         })
     }
 
-    switchEdit(e){
-        console.log("Nombre: " + e.target.attributes.name.value + ", autor: " + e.target.attributes.author.value)
+    switchEdit(event){
+        console.log("Nombre: " + event.target.attributes.name.value + ", autor: " + event.target.attributes.author.value)
+        
         this.setState({
-            name:e.target.attributes.name.value ,
-            author:e.target.attributes.author.value,
+            name: event.target.attributes.name.value,
+            author: event.target.attributes.author.value,
             editar:true
         })
     }
@@ -78,7 +74,7 @@ class MovieList extends React.Component { // Componente stateless
                         <MovieEditer
                                     name={ this.state.name }
                                     author={ this.state.author }
-                                    onSubmit={ this.ejecutarEdicion }
+                                    onSubmit={ this.switchWatch }
                                     cancelar={ this.switchWatch } /> 
                         
                     </div>

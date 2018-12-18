@@ -17,28 +17,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 )
-
-/*const mapStateToProps = (state) => {
-  return {
-     movies: getALGO (
-        state.movies
-      )
-    };
-  };*/
-
-  /*const mapDispatchToProps = (dispatch) => {
-      return {
-        onClick: (ID_ALGO) => {
-          dispatch({
-            type:'ADD_MOVIE'
-            ID_ALGO
-          })
-        }
-      };
-  }; */
-
-  /*const { connect } = ReactRedux;
-   const ConstanteAlgo = connect (
-     mapStateToProps,
-     mapDispatchToProps
-   )(TodoList); */

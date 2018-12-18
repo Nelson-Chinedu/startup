@@ -27,13 +27,13 @@ onSubmit(event) {
         }
 
     this.props.onAddMovie(movie);
-    //this.props.onAddMovie(movie);
+    
 }
 
     render() {
         return(
             <div>
-                <input placeholder="Ingresa nombre de peli"  ref={ this.refName } /> 
+                <input placeholder="Ingresa nombre de peli" ref={ this.refName } /> 
 
                 <hr />
 

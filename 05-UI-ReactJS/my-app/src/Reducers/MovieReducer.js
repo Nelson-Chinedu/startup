@@ -25,6 +25,14 @@ const initialState = {
 function movieReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_MOVIE:
+    debugger
+      for(var i=0;i<state.movies.length;i++){
+        
+        if(state.movies[i].name===action.movie.name){
+          alert("Ese titulo ya existe!")
+          return {movies:state.movies}
+        }
+      }
       return {
         movies: [
             ...state.movies,
@@ -36,30 +44,21 @@ function movieReducer(state = initialState, action) {
       }
 
     case EDIT_MOVIE:
-        // let array = this.state.movies
+        let array = state.movies
    
-        // if (nombreFinal===''){
-        //     nombreFinal=nombreInicial;
-        // }
-
-        // if (authorFinal===''){
-        //     authorFinal=authorInicial;
-        // }
-
-        // for(var i=0;i<array.length;i++){
-        //     if (array[i].name===nombreInicial){
-        //         array[i].name=nombreFinal;
-        //         array[i].author=authorFinal;
-        //         break;
-        //     }
-        // }
-        return Object.assign({}, state, {
-            
-        // ACA DEBERIA EDITAR UNA PELICULA
-      })
+        for(var i=0;i<array.length;i++){
+            if (array[i].name===action.data.oldMovie.name && array[i].author===action.data.oldMovie.author){
+                array[i].name=action.data.newMovie.name;
+                array[i].author=action.data.newMovie.author;
+                break;
+            }
+        }
+        return {
+            movies:array
+      }
       
     case DELETE_MOVIE:
-        const result = state.movies.filter(item => item.name!==action.movie.name && item.author!==action.movie.author)
+        const result = state.movies.filter(item => item.name!==action.movie.name || item.author!==action.movie.author)
         
         return {
           movies:result
