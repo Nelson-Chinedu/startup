@@ -91,9 +91,9 @@ class App extends React.Component {
   render() {
     return (
       <div id="container">
-          <MovieCreator onAddMovie={ this.addMovie } />
+          <MovieCreator />
           <hr />
-          <MovieList onDeleteMovie={ this.deleteMovie} movies={ this.state.filteredMovies } edit={ this.edit } onFiltered={ this.efectuarFiltro }/>
+          <MovieList />
           <hr />
           
       </div>

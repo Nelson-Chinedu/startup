@@ -5,7 +5,7 @@ import App from './App';
 
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
-import rootReducer from './Reducer'
+import rootReducer from './Reducers' // automaticamente busca un index si no especifico el file
 
 
 

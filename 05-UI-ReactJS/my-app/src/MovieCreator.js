@@ -1,6 +1,6 @@
 import React from 'react';
-
-
+import { addMovie } from './Actions.js';
+import { connect } from 'react-redux';
 
 class MovieCreator extends React.Component {
 constructor() {
@@ -25,8 +25,9 @@ onSubmit(event) {
         name:this.refName.current.value,
         author:this.refAuthor.current.value
         }
-    
+
     this.props.onAddMovie(movie);
+    //this.props.onAddMovie(movie);
 }
 
     render() {
@@ -49,7 +50,22 @@ onSubmit(event) {
     }
 }
 
+const mapStateToProps = (state) => { // mapea el estado de redux al componente este, como props
+  console.log(state)
+  return {
+     movies: state.movieReducer.movies
+    };
+  };
 
+  const mapDispatchToProps = (dispatch) => {
+      return {
+        onAddMovie: (movie) => {
+          dispatch(addMovie(movie))
+        }
+      };
+  }; 
 
-
-export default MovieCreator;
+export default connect (
+     mapStateToProps,
+     mapDispatchToProps
+   )(MovieCreator); 

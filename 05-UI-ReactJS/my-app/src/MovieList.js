@@ -2,6 +2,9 @@ import React from 'react';
 import MovieEditer from './MovieEditer.js';
 import Filter from './Filter.js';
 
+import { deleteMovie } from './Actions.js';
+import { connect } from 'react-redux';
+
 class MovieList extends React.Component { // Componente stateless
     constructor(){
         super();
@@ -10,17 +13,16 @@ class MovieList extends React.Component { // Componente stateless
             name: '',
             author: ''
         }
-        this.mostrar=this.mostrar.bind( this );
-        this.switchEdit=this.switchEdit.bind(this);
-        this.switchWatch=this.switchWatch.bind(this);
-        this.ejecutarEdicion=this.ejecutarEdicion.bind(this);
-        this.efectuarFiltro=this.efectuarFiltro.bind(this);
-        this.deleteMovie=this.deleteMovie.bind(this);
+      
+        this.onClickDelete=this.onClickDelete.bind(this);
         
     }
 
-    deleteMovie(e){
-        this.props.onDeleteMovie(e.target.attributes.name.value)
+    onClickDelete(event){
+        event.preventDefault();
+
+        this.props.onDeleteMovie(event.target.attributes.name.value,event.target.attributes.author.value);
+        //this.props.onDeleteMovie(e.target.attributes.name.value,e.target.attributes.author.value)
     }
 
     efectuarFiltro(keyWord){
@@ -30,10 +32,11 @@ class MovieList extends React.Component { // Componente stateless
     mostrar(){
             if (this.state.editar===false){
             let items = this.props.movies;
+
             return( 
                 <div> Peliculas disponibles:
                     <ul>
-                            { items.map(item => <Elemento deleteMovie={this.deleteMovie} switchEdit={ this.switchEdit } key={ item.name } items={ item } />) } 
+                            { items.map(item => <Elemento onClickDelete={this.onClickDelete} switchEdit={ this.switchEdit } key={ item.name } items={ item } />) } 
                     </ul>
                     <Filter onFiltered={ this.efectuarFiltro } />
                 </div>
@@ -97,7 +100,7 @@ const Elemento = (props) => <li>
                                         author={props.items.author} > Editar </button> }
 
                                 { <button // boton de eliminar
-                                        onClick={props.deleteMovie}
+                                        onClick={props.onClickDelete}
                                         name={props.items.name}
                                         author={props.items.author} > Eliminar </button> }
                                 
@@ -105,4 +108,22 @@ const Elemento = (props) => <li>
 
 
 
-export default MovieList;
+const mapStateToProps = (state) => { // mapea el estado de redux al componente este, como props
+  console.log(state)
+  return {
+     movies: state.movieReducer.movies
+    };
+  };
+
+  const mapDispatchToProps = (dispatch) => {
+      return {
+        onDeleteMovie: (movie) => {
+          dispatch(deleteMovie(movie))
+        }
+      };
+  }; 
+
+export default connect (
+     mapStateToProps,
+     mapDispatchToProps
+   )(MovieList); 

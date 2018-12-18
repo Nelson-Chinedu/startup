@@ -1,5 +1,5 @@
-import {ADD_MOVIE, EDIT_MOVIE, DELETE_MOVIE} from './actions';
-import { combineReducers } from 'redux';
+import {ADD_MOVIE, EDIT_MOVIE, DELETE_MOVIE} from '../Constantes.js';
+
 
 const initialState = {
   movies: [
@@ -22,19 +22,18 @@ const initialState = {
   ]
 }
 
-function todoApp(state = initialState, action) {
+function movieReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_MOVIE:
-      return Object.assign({}, state, {
-        // ACA DEBERIA AGREGAR UNA PELICULA
+      return {
         movies: [
             ...state.movies,
             {
-                name:action.name,
-                author:action.author
+                name:action.movie.name,
+                author:action.movie.author
             }
         ]
-      })
+      }
 
     case EDIT_MOVIE:
         // let array = this.state.movies
@@ -60,13 +59,14 @@ function todoApp(state = initialState, action) {
       })
       
     case DELETE_MOVIE:
-        return Object.assign({}, state, {
+        const result = state.movies.filter(item => item.name!==action.movie.name && item.author!==action.movie.author)
+        return {
         // ACA DEBERIA ELIMINAR UNA PELICULA
-        movies:state.movies.map(item => item.name!==action.name && item.author!==action.author)
-      })
+        movies:result
+      }
     default:
       return state
   }
 }
 
-export default todoApp;
+export default movieReducer;
