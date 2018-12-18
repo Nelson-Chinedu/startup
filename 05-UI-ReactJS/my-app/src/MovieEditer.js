@@ -67,8 +67,7 @@ class MovieEditer extends React.Component{
         )}
 }
 
-const mapStateToProps = (state) => { // mapea el estado de redux al componente este, como props
-  console.log(state)
+const mapStateToProps = (state) => {
   return {
      movies: state.movieReducer.movies
     };

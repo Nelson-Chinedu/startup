@@ -1,22 +1,30 @@
 import React from 'react';
 import MovieEditer from './MovieEditer.js';
-import Filter from './Filter.js';
-
 import { deleteMovie } from './Actions.js';
 import { connect } from 'react-redux';
 
-class MovieList extends React.Component { // Componente stateless
+class MovieList extends React.Component {
     constructor(){
         super();
         this.state = {
             name:'',
             author:'',
-            editar: false
+            editar: false,
+            filtro:''
         }
       
         this.onClickDelete=this.onClickDelete.bind(this);
         this.switchWatch=this.switchWatch.bind(this);
         this.switchEdit=this.switchEdit.bind(this);
+        this.filtrar=this.filtrar.bind(this);
+        
+        this.refInput=React.createRef();
+    }
+
+    filtrar(){
+        this.setState({
+                filtro:this.refInput.current.value
+            })
     }
 
     onClickDelete(event){
@@ -31,20 +39,13 @@ class MovieList extends React.Component { // Componente stateless
 
     }
 
-    efectuarFiltro(keyWord){
-        this.props.onFiltered(keyWord);
-    }
-
-    switchWatch(){
-        
+    switchWatch(){   
         this.setState({
             editar:false
         })
     }
 
     switchEdit(event){
-        console.log("Nombre: " + event.target.attributes.name.value + ", autor: " + event.target.attributes.author.value)
-        
         this.setState({
             name: event.target.attributes.name.value,
             author: event.target.attributes.author.value,
@@ -54,18 +55,23 @@ class MovieList extends React.Component { // Componente stateless
 
     mostrar(){
             if (this.state.editar===false){
-            let items = this.props.movies;
 
-            return( 
-                <div> Peliculas disponibles:
-                    <ul>
-                            { items.map(item => <Elemento onClickDelete={this.onClickDelete} switchEdit={ this.switchEdit } key={ item.name } items={ item } />) } 
-                    </ul>
-                    <Filter onFiltered={ this.efectuarFiltro } />
-                </div>
-            )
+                let items = this.props.movies
+                let newArray = items.filter(
+                    item => item.name.toLowerCase().includes(this.state.filtro.toLowerCase()) || item.author.toLowerCase().includes(this.state.filtro.toLowerCase()))
+    
+                return( 
+                    <div> Peliculas disponibles:
+                        <ul>
+                                { newArray.map(item => <Elemento onClickDelete={this.onClickDelete} switchEdit={ this.switchEdit } key={ item.name } items={ item } />) } 
+                        </ul>
+                        <input onChange={ this.filtrar } placeholder="Ingresa palabras clave aqui!" ref={this.refInput} />
+                    </div>
+                )
         }
+
         else
+
             {
                 
                 return(
@@ -78,7 +84,7 @@ class MovieList extends React.Component { // Componente stateless
                                     cancelar={ this.switchWatch } /> 
                         
                     </div>
-
+                
                 )}
     }
 
@@ -112,7 +118,6 @@ const Elemento = (props) => <li>
 
 
 const mapStateToProps = (state) => { // mapea el estado de redux al componente este, como props
-  console.log(state)
   return {
      movies: state.movieReducer.movies
     };

@@ -25,8 +25,7 @@ const initialState = {
 function movieReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_MOVIE:
-    debugger
-      for(var i=0;i<state.movies.length;i++){
+      for(let i=0;i<state.movies.length;i++){
         
         if(state.movies[i].name===action.movie.name){
           alert("Ese titulo ya existe!")
@@ -46,7 +45,7 @@ function movieReducer(state = initialState, action) {
     case EDIT_MOVIE:
         let array = state.movies
    
-        for(var i=0;i<array.length;i++){
+        for(let i=0;i<array.length;i++){
             if (array[i].name===action.data.oldMovie.name && array[i].author===action.data.oldMovie.author){
                 array[i].name=action.data.newMovie.name;
                 array[i].author=action.data.newMovie.author;

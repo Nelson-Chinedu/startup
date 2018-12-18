@@ -1,4 +1,4 @@
-import {ADD_MOVIE,EDIT_MOVIE,DELETE_MOVIE} from './Constantes.js';
+import {ADD_MOVIE,EDIT_MOVIE,DELETE_MOVIE,FILTER_MOVIE} from './Constantes.js';
 
 /*
  * creadores de acciones
@@ -22,5 +22,12 @@ export function deleteMovie(movie) {
   return { 
       type: DELETE_MOVIE, 
       movie 
+      }
+}
+
+export function filterMovies(text) {
+  return { 
+      type: FILTER_MOVIE, 
+      text 
       }
 }
