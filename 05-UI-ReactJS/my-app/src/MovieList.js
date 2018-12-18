@@ -21,12 +21,39 @@ class MovieList extends React.Component { // Componente stateless
     onClickDelete(event){
         event.preventDefault();
 
-        this.props.onDeleteMovie(event.target.attributes.name.value,event.target.attributes.author.value);
-        //this.props.onDeleteMovie(e.target.attributes.name.value,e.target.attributes.author.value)
+        let movie = {
+            name: event.target.attributes.name.value,
+            movie: event.target.attributes.author.value
+        }
+        this.props.onDeleteMovie(movie);
+        debugger
+
     }
 
     efectuarFiltro(keyWord){
         this.props.onFiltered(keyWord);
+    }
+
+    
+    ejecutarEdicion(nInicial,aInicial,nFinal,aFinal){
+        this.props.edit(nInicial,aInicial,nFinal,aFinal)
+        this.switchWatch();
+    }
+
+    switchWatch(){
+        
+        this.setState({
+            editar:false
+        })
+    }
+
+    switchEdit(e){
+        console.log("Nombre: " + e.target.attributes.name.value + ", autor: " + e.target.attributes.author.value)
+        this.setState({
+            name:e.target.attributes.name.value ,
+            author:e.target.attributes.author.value,
+            editar:true
+        })
     }
 
     mostrar(){
@@ -59,26 +86,6 @@ class MovieList extends React.Component { // Componente stateless
                 )}
     }
 
-    ejecutarEdicion(nInicial,aInicial,nFinal,aFinal){
-        this.props.edit(nInicial,aInicial,nFinal,aFinal)
-        this.switchWatch();
-    }
-
-    switchWatch(){
-        
-        this.setState({
-            editar:false
-        })
-    }
-
-    switchEdit(e){
-        console.log("Nombre: " + e.target.attributes.name.value + ", autor: " + e.target.attributes.author.value)
-        this.setState({
-            name:e.target.attributes.name.value ,
-            author:e.target.attributes.author.value,
-            editar:true
-        })
-    }
 
     render(){
         return(

@@ -60,9 +60,9 @@ function movieReducer(state = initialState, action) {
       
     case DELETE_MOVIE:
         const result = state.movies.filter(item => item.name!==action.movie.name && item.author!==action.movie.author)
+        
         return {
-        // ACA DEBERIA ELIMINAR UNA PELICULA
-        movies:result
+          movies:result
       }
     default:
       return state
